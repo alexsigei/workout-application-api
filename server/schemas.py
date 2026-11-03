@@ -103,6 +103,22 @@ class WorkoutSchema(Schema):
                 })
 
 
+class WorkoutSummarySchema(Schema):
+    id = fields.Int(dump_only=True)
+    date = fields.Date()
+    duration_minutes = fields.Int()
+    notes = fields.Str(allow_none=True)
+
+
+class ExerciseDetailSchema(ExerciseSchema):
+    workouts = fields.Nested(
+        WorkoutSummarySchema,
+        many=True,
+        dump_only=True
+    )
+
+
+
 class WorkoutExerciseCreateSchema(Schema):
     reps = fields.Int(
         allow_none=True,
