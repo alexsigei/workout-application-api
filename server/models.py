@@ -1,11 +1,10 @@
 
 from datetime import date
 
-from flask_sqlalchemy import SQLAlchemy
+from server.extensions import db
 from sqlalchemy import CheckConstraint, UniqueConstraint
 from sqlalchemy.orm import validates
 
-db = SQLAlchemy()
 
 
 class Exercise(db.Model):
