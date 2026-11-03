@@ -1,7 +1,9 @@
+
 from flask import Flask
 
 from server.extensions import db, migrate
 from server import models
+from server.workout_routes import workout_api
 
 
 def create_app():
@@ -12,6 +14,8 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+
+    app.register_blueprint(workout_api)
 
     return app
 
